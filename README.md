@@ -1,2 +1,2 @@
-# slack-models
-Models for working with slack
+# Slack Models
+Models for working with slack.
