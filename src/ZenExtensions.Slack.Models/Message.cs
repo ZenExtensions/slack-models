@@ -7,7 +7,7 @@ namespace ZenExtensions.Slack.Models
         [property: JsonPropertyName("text")]
         string? Text = null,
         [property: JsonPropertyName("response_type")]
-        ResponseType? ResponseType = ResponseType.Ephemeral,
+        string? ResponseType = ResponseType.EPHEMERAL,
         [property: JsonPropertyName("username")]
         string? Username = null,
         [property: JsonPropertyName("icon_emoji")]

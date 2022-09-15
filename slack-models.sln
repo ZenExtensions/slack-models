@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6B8FDBE3-3EF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZenExtensions.Slack.Models", "src\ZenExtensions.Slack.Models\ZenExtensions.Slack.Models.csproj", "{C142E647-AB64-4DF9-B5B5-08C12AC300AA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{558A2CF9-F1E8-43E9-8A73-347CA8B035ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZenExtensions.Slack.Models.Tests", "tests\ZenExtensions.Slack.Models.Tests\ZenExtensions.Slack.Models.Tests.csproj", "{5D12ECA5-BD24-453B-BBF1-9E00BC8A5190}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,13 @@ Global
 		{C142E647-AB64-4DF9-B5B5-08C12AC300AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C142E647-AB64-4DF9-B5B5-08C12AC300AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C142E647-AB64-4DF9-B5B5-08C12AC300AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D12ECA5-BD24-453B-BBF1-9E00BC8A5190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D12ECA5-BD24-453B-BBF1-9E00BC8A5190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D12ECA5-BD24-453B-BBF1-9E00BC8A5190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D12ECA5-BD24-453B-BBF1-9E00BC8A5190}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C142E647-AB64-4DF9-B5B5-08C12AC300AA} = {6B8FDBE3-3EF4-424E-A999-9C6F3CDC6DCE}
+		{5D12ECA5-BD24-453B-BBF1-9E00BC8A5190} = {558A2CF9-F1E8-43E9-8A73-347CA8B035ED}
 	EndGlobalSection
 EndGlobal
