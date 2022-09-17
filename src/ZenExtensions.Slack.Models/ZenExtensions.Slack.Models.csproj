@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Company>Zen Extensions</Company>
+    <Description>Slack models for working with slack</Description>
+    <RepositoryUrl>https://github.com/ZenExtensions/slack-models</RepositoryUrl>
+    <PackageId>ZenExtensions.Slack.Models</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
 </Project>
