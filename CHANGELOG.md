@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added 
+
+- Added slack [composition objects](https://api.slack.com/reference/block-kit/composition-objects)
+
 ### Changed
 
 - Throws InvalidOperationException if fields are more than 10 for a single attachment
