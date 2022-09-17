@@ -42,16 +42,22 @@ namespace ZenExtensions.Slack.Models
         /// Representst the attachments of the slack message
         /// </summary>
         [JsonPropertyName("attachments")]
-        public List<Attachment>? Attachments { get; private set; }
+        public IList<Attachment>? Attachments { get; private set; }
         /// <summary>
         /// Adds an attachment to the message
         /// </summary>
         /// <param name="attachment">Instance of <see cref="Attachment"/></param>
         /// <returns>Instance of current <see cref="Message"/></returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="attachment"/> is null</exception>
+        /// <exception cref="InvalidOperationException">Thrown when there are already 10 attachments attached with message</exception>
         public Message AddAttachment([NotNull] Attachment attachment)
         {
             ArgumentNullException.ThrowIfNull(attachment, nameof(attachment));
             Attachments ??= new List<Attachment>();
+            if (Attachments.Count >= 10)
+            {
+                throw new InvalidOperationException("Cannot add more than 10 attachments to a message");
+            }
             Attachments.Add(attachment);
             return this;
         }
