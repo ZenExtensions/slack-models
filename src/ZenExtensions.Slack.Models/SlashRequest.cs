@@ -2,7 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace ZenExtensions.Slack.Models
 {
-    public sealed record class TriggerRequest
+    /// <summary>
+    /// Represents the body of message via slack slashh request
+    /// </summary>
+    public sealed record class SlashRequest
     (
         [property: JsonPropertyName("token")]
         string? Token = null,
