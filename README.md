@@ -1,5 +1,5 @@
 # Slack Models
-[![Actions Status](https://github.com/ZenExtensions/slack-models/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/ZenExtensions/slack-models/actions) [![Current Version](https://img.shields.io/badge/Version-1.1.0-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#110---2023-01-26)
+[![Actions Status](https://github.com/ZenExtensions/slack-models/workflows/.NET%20Core%20Publish/badge.svg)](https://github.com/ZenExtensions/slack-models/actions) [![Current Version](https://img.shields.io/badge/Version-1.1.1-brightgreen?logo=nuget&labelColor=30363D)](./CHANGELOG.md#111---2023-01-26)
 
 # Overview
 

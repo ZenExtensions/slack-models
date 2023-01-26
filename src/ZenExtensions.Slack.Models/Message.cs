@@ -29,7 +29,7 @@ namespace ZenExtensions.Slack.Models
         string? Text = null,
         [property: JsonPropertyName("response_type"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? ResponseType = ResponseType.EPHEMERAL,
-        [property: JsonPropertyName("username")]
+        [property: JsonPropertyName("username"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Username = null,
         [property: JsonPropertyName("icon_emoji"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? IconEmoji = null,
