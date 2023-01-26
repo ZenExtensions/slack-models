@@ -56,41 +56,41 @@ namespace ZenExtensions.Slack.Models
     ///     A valid URL that displays a small 16px by 16px image to the left of the <see cref="AuthorName"/> text. Will only work if <see cref="AuthorName"/> is present.
     /// </param>
     public sealed record class Attachment(
-        [property: JsonPropertyName("text")]
+        [property: JsonPropertyName("text"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Text = null,
-        [property: JsonPropertyName("fallback")]
+        [property: JsonPropertyName("fallback"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Fallback = null,
-        [property: JsonPropertyName("footer")]
+        [property: JsonPropertyName("footer"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Footer = null,
-        [property: JsonPropertyName("footer")]
+        [property: JsonPropertyName("footer"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? FooterIcon = null,
-        [property: JsonPropertyName("color")]
+        [property: JsonPropertyName("color"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Color = null,
-        [property: JsonPropertyName("image_url")]
+        [property: JsonPropertyName("image_url"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? ImageUrl = null,
-        [property: JsonPropertyName("pretext")]
+        [property: JsonPropertyName("pretext"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? PreText = null,
-        [property: JsonPropertyName("thumb_url")]
+        [property: JsonPropertyName("thumb_url"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? ThumbUrl = null,
-        [property: JsonPropertyName("title")]
+        [property: JsonPropertyName("title"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Title = null,
-        [property: JsonPropertyName("title_link")]
+        [property: JsonPropertyName("title_link"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? TitleLink = null,
-        [property: JsonPropertyName("ts")]
+        [property: JsonPropertyName("ts"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Ts = null,
-        [property: JsonPropertyName("author_name")]
+        [property: JsonPropertyName("author_name"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? AuthorName = null,
-        [property: JsonPropertyName("author_link")]
+        [property: JsonPropertyName("author_link"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? AuthorLink = null,
-        [property: JsonPropertyName("author_icon")]
+        [property: JsonPropertyName("author_icon"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? AuthorIcon = null
     )
     {
         /// <summary>
         /// An array of field objects that get displayed in a table-like way (See the example above). For best results, include no more than 2-3 field objects.
         /// </summary>
-        [JsonPropertyName("fields")]
-        public List<Field>? Fields { get; private set; }
+        [JsonPropertyName("fields"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IList<Field>? Fields { get; private set; }
         /// <summary>
         /// Adds a new field to the attachment
         /// </summary>
@@ -104,11 +104,17 @@ namespace ZenExtensions.Slack.Models
         ///     Indicates whether the field object is short enough to be displayed side-by-side with other field objects. Defaults to false.
         /// </param>
         /// <returns>Instance of current <see cref="Attachment"/></returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="title"/> or <paramref name="value"/> is null</exception>
+        /// <exception cref="InvalidOperationException">Thrown when there are already 10 fields in the attachment</exception>
         public Attachment AddField([NotNull] string title, [NotNull] string value, bool @short = true)
         {
             ArgumentNullException.ThrowIfNull(title, nameof(title));
             ArgumentNullException.ThrowIfNull(value, nameof(value));
             Fields ??= new List<Field>();
+            if(Fields.Count >= 10)
+            {
+                throw new InvalidOperationException("Cannot add more than 10 fields to an attachment");
+            }
             Fields.Add(
                 new Field(Title: title, Value: value, Short: @short)
             );
@@ -119,10 +125,16 @@ namespace ZenExtensions.Slack.Models
         /// </summary>
         /// <param name="field">Instance of <see cref="Field"/> </param>
         /// <returns>Instance of current <see cref="Attachment"/></returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="field"/> is null</exception>
+        /// <exception cref="InvalidOperationException">Thrown when there are already 10 fields in the attachment</exception>
         public Attachment AddField([NotNull] Field field)
         {
             ArgumentNullException.ThrowIfNull(field, nameof(field));
             Fields ??= new List<Field>();
+            if(Fields.Count >= 10)
+            {
+                throw new InvalidOperationException("Cannot add more than 10 fields to an attachment");
+            }
             Fields.Add(field);
             return this;
         }

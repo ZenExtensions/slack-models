@@ -15,11 +15,11 @@ namespace ZenExtensions.Slack.Models
     ///     Indicates whether the field object is short enough to be displayed side-by-side with other field objects. Defaults to false.
     /// </param>
     public sealed record class Field(
-        [property: JsonPropertyName("title")]
+        [property: JsonPropertyName("title"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Title, 
-        [property: JsonPropertyName("value")]
+        [property: JsonPropertyName("value"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Value, 
-        [property: JsonPropertyName("short")]
+        [property: JsonPropertyName("short"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         bool Short = true
     );
 }

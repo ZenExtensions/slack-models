@@ -25,15 +25,15 @@ namespace ZenExtensions.Slack.Models
     ///     The URL to an image to use as the icon for this message. 
     /// </param>
     public sealed record class Message(
-        [property: JsonPropertyName("text")]
+        [property: JsonPropertyName("text"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Text = null,
-        [property: JsonPropertyName("response_type")]
+        [property: JsonPropertyName("response_type"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? ResponseType = ResponseType.EPHEMERAL,
         [property: JsonPropertyName("username")]
         string? Username = null,
-        [property: JsonPropertyName("icon_emoji")]
+        [property: JsonPropertyName("icon_emoji"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? IconEmoji = null,
-        [property: JsonPropertyName("icon_url")]
+        [property: JsonPropertyName("icon_url"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? IconUrl = null
     )
     {
@@ -41,17 +41,23 @@ namespace ZenExtensions.Slack.Models
         /// <summary>
         /// Representst the attachments of the slack message
         /// </summary>
-        [JsonPropertyName("attachments")]
-        public List<Attachment>? Attachments { get; private set; }
+        [JsonPropertyName("attachments"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IList<Attachment>? Attachments { get; private set; }
         /// <summary>
         /// Adds an attachment to the message
         /// </summary>
         /// <param name="attachment">Instance of <see cref="Attachment"/></param>
         /// <returns>Instance of current <see cref="Message"/></returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="attachment"/> is null</exception>
+        /// <exception cref="InvalidOperationException">Thrown when there are already 10 attachments attached with message</exception>
         public Message AddAttachment([NotNull] Attachment attachment)
         {
             ArgumentNullException.ThrowIfNull(attachment, nameof(attachment));
             Attachments ??= new List<Attachment>();
+            if (Attachments.Count >= 10)
+            {
+                throw new InvalidOperationException("Cannot add more than 10 attachments to a message");
+            }
             Attachments.Add(attachment);
             return this;
         }
