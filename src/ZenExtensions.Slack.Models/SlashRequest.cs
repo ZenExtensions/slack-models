@@ -52,7 +52,7 @@ namespace ZenExtensions.Slack.Models
             IsEnterpriseInstall: dto.IsEnterpriseInstall?[0],
             ResponseUrl: dto.ResponseUrl?[0],
             TriggerId: dto.TriggerId?[0]
-        )
+        );
     }
 
     /// <summary>
