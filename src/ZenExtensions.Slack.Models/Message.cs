@@ -61,5 +61,56 @@ namespace ZenExtensions.Slack.Models
             Attachments.Add(attachment);
             return this;
         }
+
+        private static Message colorMessage(string text, string color)
+        {
+            return new Message()
+                .AddAttachment(
+                    new Attachment(
+                        Text: text,
+                        Color: color
+                    )
+                );
+        }
+
+        /// <summary>
+        /// Returns a new error message
+        /// </summary>
+        /// <param name="text">text body of message</param>
+        /// <returns>new instance of <see cref="Message"/></returns>
+        public static Message ErrorMessage(string text)
+        {
+            return colorMessage(text, "#F44336");
+        }
+
+        /// <summary>
+        /// Returns a new info message
+        /// </summary>
+        /// <param name="text">text body of message</param>
+        /// <returns>new instance of <see cref="Message"/></returns>
+        public static Message InfoMessage(string text)
+        {
+            return colorMessage(text, "#29B6F6");
+        }
+
+        /// <summary>
+        /// Returns a new warning message
+        /// </summary>
+        /// <param name="text">text body of message</param>
+        /// <returns>new instance of <see cref="Message"/></returns>
+        public static Message WarningMessage(string text)
+        {
+            return colorMessage(text, "#FFEE58");
+        }
+
+        /// <summary>
+        /// Returns a new success message
+        /// </summary>
+        /// <param name="text">text body of message</param>
+        /// <returns>new instance of <see cref="Message"/></returns>
+        public static Message SuccessMessage(string text)
+        {
+            return colorMessage(text, "#00C853");
+        }
     }
 }
