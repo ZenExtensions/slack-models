@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2023-01-27
+
+### Added
+
+- Added extension functions for message
+### Changed
+
+- Fixed duplicate json property footer 
 
 ## [1.1.1] - 2023-01-26
 
@@ -34,7 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Addex slack slash request models
 - Added http extensions for slack message
 
-[Unreleased]: https://github.com/ZenExtensions/slack-models/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/ZenExtensions/slack-models/compare/1.1.2...HEAD
+[1.1.2]: https://github.com/ZenExtensions/slack-models/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/ZenExtensions/slack-models/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/ZenExtensions/slack-models/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/ZenExtensions/slack-models/releases/tag/1.0.0
