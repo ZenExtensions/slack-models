@@ -62,7 +62,7 @@ namespace ZenExtensions.Slack.Models
         string? Fallback = null,
         [property: JsonPropertyName("footer"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Footer = null,
-        [property: JsonPropertyName("footer"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [property: JsonPropertyName("footer_icon"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? FooterIcon = null,
         [property: JsonPropertyName("color"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Color = null,
