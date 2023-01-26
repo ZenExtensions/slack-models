@@ -17,11 +17,12 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
     /// </param>
     public sealed record class MarkdownTextObject(
         string Text,
-        [property: JsonPropertyName("verbatim")]
+        [property: JsonPropertyName("verbatim"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         bool? Verbatim = null
     ) : TextObject(Text)
     {
         /// <inheritdoc/>
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public override string Type { get; protected internal set; } = "mrkdwn";
         internal override void Validate()
         {

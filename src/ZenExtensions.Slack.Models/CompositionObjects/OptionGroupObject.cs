@@ -13,7 +13,7 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
     ///     A <see cref="PlainTextObject"/> that defines the label shown above this group of options. Maximum length for the text in this field is 75 characters.    
     /// </param>
     public sealed record class OptionGroupObject(
-        [property: JsonPropertyName("label")]
+        [property: JsonPropertyName("label"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         PlainTextObject Label
     ) : CompositionObject
     {
@@ -21,7 +21,7 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
         /// <summary>
         ///     An list of <see cref="OptionObject"/> that belong to this specific group. Maximum of 100 items.
         /// </summary>
-        [JsonPropertyName("options")]
+        [JsonPropertyName("options"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public IList<OptionObject>? Options { get; private set; }
 
         /// <summary>

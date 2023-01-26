@@ -25,15 +25,15 @@ namespace ZenExtensions.Slack.Models
     ///     The URL to an image to use as the icon for this message. 
     /// </param>
     public sealed record class Message(
-        [property: JsonPropertyName("text")]
+        [property: JsonPropertyName("text"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Text = null,
-        [property: JsonPropertyName("response_type")]
+        [property: JsonPropertyName("response_type"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? ResponseType = ResponseType.EPHEMERAL,
         [property: JsonPropertyName("username")]
         string? Username = null,
-        [property: JsonPropertyName("icon_emoji")]
+        [property: JsonPropertyName("icon_emoji"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? IconEmoji = null,
-        [property: JsonPropertyName("icon_url")]
+        [property: JsonPropertyName("icon_url"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? IconUrl = null
     )
     {
@@ -41,7 +41,7 @@ namespace ZenExtensions.Slack.Models
         /// <summary>
         /// Representst the attachments of the slack message
         /// </summary>
-        [JsonPropertyName("attachments")]
+        [JsonPropertyName("attachments"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public IList<Attachment>? Attachments { get; private set; }
         /// <summary>
         /// Adds an attachment to the message

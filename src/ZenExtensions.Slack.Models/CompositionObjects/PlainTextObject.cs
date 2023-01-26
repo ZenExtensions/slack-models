@@ -16,11 +16,12 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
     /// </param>
     public sealed record class PlainTextObject(
         string Text,
-        [property: JsonPropertyName("emoji")]
+        [property: JsonPropertyName("emoji"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         bool? Emoji = null
     ) : TextObject(Text)
     {
         /// <inheritdoc/>
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public override string Type { get; protected internal set; } = "plain_text";
         internal override void Validate()
         {

@@ -27,13 +27,13 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
     ///     If you're using url, you'll still receive an interaction payload and will need to send an acknowledgement response.
     /// </param>
     public sealed record class OptionObject(
-        [property: JsonPropertyName("text")]
+        [property: JsonPropertyName("text"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         TextObject TextObject,
-        [property: JsonPropertyName("value")]
+        [property: JsonPropertyName("value"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string Value,
-        [property: JsonPropertyName("description")]
+        [property: JsonPropertyName("description"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         PlainTextObject? Description = null,
-        [property: JsonPropertyName("url")]
+        [property: JsonPropertyName("url"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Url = null
     ) : CompositionObject
     {

@@ -56,40 +56,40 @@ namespace ZenExtensions.Slack.Models
     ///     A valid URL that displays a small 16px by 16px image to the left of the <see cref="AuthorName"/> text. Will only work if <see cref="AuthorName"/> is present.
     /// </param>
     public sealed record class Attachment(
-        [property: JsonPropertyName("text")]
+        [property: JsonPropertyName("text"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Text = null,
-        [property: JsonPropertyName("fallback")]
+        [property: JsonPropertyName("fallback"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Fallback = null,
-        [property: JsonPropertyName("footer")]
+        [property: JsonPropertyName("footer"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Footer = null,
-        [property: JsonPropertyName("footer")]
+        [property: JsonPropertyName("footer"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? FooterIcon = null,
-        [property: JsonPropertyName("color")]
+        [property: JsonPropertyName("color"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Color = null,
-        [property: JsonPropertyName("image_url")]
+        [property: JsonPropertyName("image_url"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? ImageUrl = null,
-        [property: JsonPropertyName("pretext")]
+        [property: JsonPropertyName("pretext"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? PreText = null,
-        [property: JsonPropertyName("thumb_url")]
+        [property: JsonPropertyName("thumb_url"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? ThumbUrl = null,
-        [property: JsonPropertyName("title")]
+        [property: JsonPropertyName("title"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Title = null,
-        [property: JsonPropertyName("title_link")]
+        [property: JsonPropertyName("title_link"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? TitleLink = null,
-        [property: JsonPropertyName("ts")]
+        [property: JsonPropertyName("ts"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Ts = null,
-        [property: JsonPropertyName("author_name")]
+        [property: JsonPropertyName("author_name"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? AuthorName = null,
-        [property: JsonPropertyName("author_link")]
+        [property: JsonPropertyName("author_link"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? AuthorLink = null,
-        [property: JsonPropertyName("author_icon")]
+        [property: JsonPropertyName("author_icon"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? AuthorIcon = null
     )
     {
         /// <summary>
         /// An array of field objects that get displayed in a table-like way (See the example above). For best results, include no more than 2-3 field objects.
         /// </summary>
-        [JsonPropertyName("fields")]
+        [JsonPropertyName("fields"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public IList<Field>? Fields { get; private set; }
         /// <summary>
         /// Adds a new field to the attachment

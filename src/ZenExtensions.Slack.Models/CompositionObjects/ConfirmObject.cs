@@ -27,15 +27,15 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
     ///     If this field is not provided, the default value will be primary.
     /// </param>
     public sealed record class ConfirmObject(
-        [property: JsonPropertyName("title")]
+        [property: JsonPropertyName("title"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         PlainTextObject Title,
-        [property: JsonPropertyName("text")]
+        [property: JsonPropertyName("text"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         TextObject TextObject,
-        [property: JsonPropertyName("confirm")]
+        [property: JsonPropertyName("confirm"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         PlainTextObject Confirm,
-        [property: JsonPropertyName("deny")]
+        [property: JsonPropertyName("deny"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         PlainTextObject Deny,
-        [property: JsonPropertyName("style")]
+        [property: JsonPropertyName("style"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string Style = "primary"
     ): CompositionObject
     {
