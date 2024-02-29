@@ -27,11 +27,11 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
         {
             if (string.IsNullOrWhiteSpace(Text))
             {
-                throw new InvalidOperationException("Text is required");
+                throw new ArgumentException("Text is required");
             }
             if (Text.Length > 3000)
             {
-                throw new InvalidOperationException("Text cannot be longer than 3000 characters");
+                throw new ArgumentException("Text cannot be longer than 3000 characters");
             }
         }
         /// <summary>
@@ -44,7 +44,7 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
             {
                 throw new ArgumentNullException(nameof(text));
             }
-            return new (text);
+            return new(text);
         }
     }
 }

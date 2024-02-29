@@ -105,15 +105,15 @@ namespace ZenExtensions.Slack.Models
         /// </param>
         /// <returns>Instance of current <see cref="Attachment"/></returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="title"/> or <paramref name="value"/> is null</exception>
-        /// <exception cref="InvalidOperationException">Thrown when there are already 10 fields in the attachment</exception>
+        /// <exception cref="ArgumentException">Thrown when there are already 10 fields in the attachment</exception>
         public Attachment AddField([NotNull] string title, [NotNull] string value, bool @short = true)
         {
             ArgumentNullException.ThrowIfNull(title, nameof(title));
             ArgumentNullException.ThrowIfNull(value, nameof(value));
             Fields ??= new List<Field>();
-            if(Fields.Count >= 10)
+            if (Fields.Count >= 10)
             {
-                throw new InvalidOperationException("Cannot add more than 10 fields to an attachment");
+                throw new ArgumentException("Cannot add more than 10 fields to an attachment");
             }
             Fields.Add(
                 new Field(Title: title, Value: value, Short: @short)
@@ -126,14 +126,14 @@ namespace ZenExtensions.Slack.Models
         /// <param name="field">Instance of <see cref="Field"/> </param>
         /// <returns>Instance of current <see cref="Attachment"/></returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="field"/> is null</exception>
-        /// <exception cref="InvalidOperationException">Thrown when there are already 10 fields in the attachment</exception>
+        /// <exception cref="ArgumentException">Thrown when there are already 10 fields in the attachment</exception>
         public Attachment AddField([NotNull] Field field)
         {
             ArgumentNullException.ThrowIfNull(field, nameof(field));
             Fields ??= new List<Field>();
-            if(Fields.Count >= 10)
+            if (Fields.Count >= 10)
             {
-                throw new InvalidOperationException("Cannot add more than 10 fields to an attachment");
+                throw new ArgumentException("Cannot add more than 10 fields to an attachment");
             }
             Fields.Add(field);
             return this;

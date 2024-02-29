@@ -34,9 +34,9 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
             ArgumentNullException.ThrowIfNull(option, nameof(option));
             option.Validate();
             Options ??= new List<OptionObject>();
-            if(Options.Count >= 100)
+            if (Options.Count >= 100)
             {
-                throw new InvalidOperationException("Cannot add more than 100 options to an option group");
+                throw new ArgumentException("Cannot add more than 100 options to an option group");
             }
             Options.Add(option);
             return this;
@@ -46,20 +46,20 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
         {
             if (Label is null)
             {
-                throw new InvalidOperationException("Label is required");
+                throw new ArgumentException("Label is required");
             }
             Label.Validate();
             if (Label.Text.Length > 75)
             {
-                throw new InvalidOperationException("Label's text field should not be greater than 75 characters");
+                throw new ArgumentException("Label's text field should not be greater than 75 characters");
             }
             if (Options is null)
             {
-                throw new InvalidOperationException("Options is required");
+                throw new ArgumentException("Options is required");
             }
             if (Options.Count > 100)
             {
-                throw new InvalidOperationException("Options cannot be longer than 100 items");
+                throw new ArgumentException("Options cannot be longer than 100 items");
             }
         }
     }

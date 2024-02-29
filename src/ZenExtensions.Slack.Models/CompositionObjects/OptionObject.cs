@@ -41,34 +41,34 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
         {
             if (TextObject is null)
             {
-                throw new InvalidOperationException("TextObject is required");
+                throw new ArgumentException("TextObject is required");
             }
             TextObject.Validate();
-            if(TextObject.Text.Length > 75)
+            if (TextObject.Text.Length > 75)
             {
-                throw new InvalidOperationException("TextObject's text field should not be greater than 75 characters");
+                throw new ArgumentException("TextObject's text field should not be greater than 75 characters");
             }
             if (string.IsNullOrWhiteSpace(Value))
             {
-                throw new InvalidOperationException("Value is required");
+                throw new ArgumentException("Value is required");
             }
             if (Value.Length > 75)
             {
-                throw new InvalidOperationException("Value cannot be longer than 75 characters");
+                throw new ArgumentException("Value cannot be longer than 75 characters");
             }
-            if(Description is not null)
+            if (Description is not null)
             {
                 Description.Validate();
-                if(Description.Text.Length > 75)
+                if (Description.Text.Length > 75)
                 {
-                    throw new InvalidOperationException("Description's text field should not be greater than 75 characters");
+                    throw new ArgumentException("Description's text field should not be greater than 75 characters");
                 }
             }
-            if(Url is not null)
+            if (Url is not null)
             {
-                if(Url.Length > 3000)
+                if (Url.Length > 3000)
                 {
-                    throw new InvalidOperationException("Url cannot be longer than 3000 characters");
+                    throw new ArgumentException("Url cannot be longer than 3000 characters");
                 }
             }
         }

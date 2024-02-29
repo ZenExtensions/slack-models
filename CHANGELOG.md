@@ -17,8 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Throws InvalidOperationException if fields are more than 10 for a single attachment
-- Throws InvalidOperationException if attachment are more than 10 for a single message
+- Throws ArgumentException if fields are more than 10 for a single attachment
+- Throws ArgumentException if attachment are more than 10 for a single message
 
 ## [1.0.0] - 2022-09-17
 

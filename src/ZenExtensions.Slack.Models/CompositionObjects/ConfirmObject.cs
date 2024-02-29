@@ -37,52 +37,52 @@ namespace ZenExtensions.Slack.Models.CompositionObjects
         PlainTextObject Deny,
         [property: JsonPropertyName("style"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string Style = "primary"
-    ): CompositionObject
+    ) : CompositionObject
     {
         internal override void Validate()
         {
             if (Title is null)
             {
-                throw new InvalidOperationException("Title is required");
+                throw new ArgumentException("Title is required");
             }
             Title.Validate();
-            if(Title.Text.Length > 100)
+            if (Title.Text.Length > 100)
             {
-                throw new InvalidOperationException("Title text should not be greater than 100 characters");
+                throw new ArgumentException("Title text should not be greater than 100 characters");
             }
 
             if (TextObject is null)
             {
-                throw new InvalidOperationException("TextObject is required");
+                throw new ArgumentException("TextObject is required");
             }
             TextObject.Validate();
-            if(TextObject.Text.Length > 300)
+            if (TextObject.Text.Length > 300)
             {
-                throw new InvalidOperationException("TextObject's text field should not be greater than 300 characters");
+                throw new ArgumentException("TextObject's text field should not be greater than 300 characters");
             }
             if (Confirm is null)
             {
-                throw new InvalidOperationException("Confirm is required");
+                throw new ArgumentException("Confirm is required");
             }
             Confirm.Validate();
-            if(Confirm.Text.Length > 30)
+            if (Confirm.Text.Length > 30)
             {
-                throw new InvalidOperationException("Confirm text should not be greater than 30 characters");
+                throw new ArgumentException("Confirm text should not be greater than 30 characters");
             }
 
             if (Deny is null)
             {
-                throw new InvalidOperationException("Deny is required");
+                throw new ArgumentException("Deny is required");
             }
             Deny.Validate();
-            if(Deny.Text.Length > 30)
+            if (Deny.Text.Length > 30)
             {
-                throw new InvalidOperationException("Deny text should not be greater than 30 characters");
+                throw new ArgumentException("Deny text should not be greater than 30 characters");
             }
 
-            if(Style != null && !new [] { "primary", "danger"}.Contains(Style))
+            if (Style != null && !new[] { "primary", "danger" }.Contains(Style))
             {
-                throw new InvalidOperationException("Style can be either of primary or danger.");
+                throw new ArgumentException("Style can be either of primary or danger.");
             }
 
         }
