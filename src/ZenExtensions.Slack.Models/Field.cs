@@ -20,6 +20,6 @@ namespace ZenExtensions.Slack.Models
         [property: JsonPropertyName("value"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         string? Value, 
         [property: JsonPropertyName("short"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        bool Short = true
+        bool? Short = true
     );
 }
